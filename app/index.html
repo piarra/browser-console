@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="xxxApp" manifest="main.appcache">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="utf-8">
+    <title>browser-console</title>
+    <meta name="description" content="xxx">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="images/music_icon.png">
+    <base href="/">
+    <!-- build:css styles/vendor.min.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <!-- /build -->
+  </head>
+  <body>
+    <div class="app">
+      <div style="background-color: black; color:#fff;">BROWSER CONSOLE</div>
+      <div ng-controller="ConsoleCtrl">
+        <div ng-repeat="log in logs">
+          <iframe srcdoc="{{log.content}}" style="width: 100%;" frameborder="0"></iframe>
+          <div style="text-align: right;">{{log.timestamp}}</div>
+          <hr />
+        </div>
+      </div> 
+    </div>
+    <!-- build:js scripts/vendor.min.js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/socket.io-client/socket.io.js"></script>
+    <!-- /build -->
+    <!-- build:js scripts/scripts.min.js -->
+    <script src="scripts/app.js"></script>
+    <!-- /build -->
+  </body>
+</html>
