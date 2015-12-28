@@ -5,10 +5,6 @@ var open = require('open');
 var mainBowerFiles = require('main-bower-files');
 var $ = require('gulp-load-plugins')();
 var url = require('url');
-var proxy = require('proxy-middleware');
-var spawn = require('child_process').spawn;
-var ngConstant = require('gulp-ng-constant');
-var aglio = require('gulp-aglio');
 var browserSync = require('browser-sync');
 
 var DESTINATION = 'www/public';
@@ -98,28 +94,6 @@ gulp.task('build', ['test', 'clean'], function() {
     .pipe($.uglify())
     .pipe($.concat('scripts.min.js'))
     .pipe(gulp.dest(DESTINATION + '/scripts'));
-});
-
-//gulp.task('config', function(cb) {
-//  var conf = require('./app/config.json');
-//
-//  var envConstants = conf['constants'][env];
-//  ngConstant({
-//    name: conf.name,
-//    deps: [],
-//    wrap: false,
-//    stream: true,
-//    constants: envConstants,
-//    templatePath: __dirname + '/app/config.tpl.ejs'
-//  })
-//    .pipe($.uglify())
-//    .pipe($.concat('config.js'))
-//    .pipe(gulp.dest('app/scripts/'));
-//});
-
-gulp.task('initdb', function(cb) {
-  var exec = require('child_process').exec;
-  exec('node ' + __dirname + '/tools/initdb', cb);
 });
 
 gulp.task('default', ['server', 'browser-sync']);
