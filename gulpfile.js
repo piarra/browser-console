@@ -19,7 +19,7 @@ gulp.task('server', function () {
 
 gulp.task('browser-sync', function() {
   browserSync({
-    proxy: 'localhost:8989'
+    proxy: 'localhost:8980'
   });
 
   gulp.watch([
