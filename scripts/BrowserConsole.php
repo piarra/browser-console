@@ -2,6 +2,8 @@
 
 class BrowserConsole
 {
+    private $socketHost = 'localhost';
+    private $socketPort = 8980;
     private function notify($message, $level = 'info', $type = 'text')
     {
         $query = [
@@ -10,7 +12,7 @@ class BrowserConsole
             'message' => $message,
         ];
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'http://localhost:8989/notify'); 
+        curl_setopt($ch, CURLOPT_URL, 'http://' . $this->socketHost . ':' . $this->socketPort . '/notify'); 
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($query));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
