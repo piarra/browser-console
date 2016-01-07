@@ -17,13 +17,21 @@ config.get('staticPath').forEach(function(path) {
 });
 
 app.get('/notify', function(req, res) {
-  io.sockets.emit('notify', {'message': req.query.message});
+  io.sockets.emit('notify', {
+    'message': req.query.message,
+    'level': req.query.level,
+    'type': req.query.type
+  });
   res.send('ok');
 });
 
 app.post('/notify', function(req, res) {
-  io.sockets.emit('notify', {'message': req.body.message});
-  res.send('ok-post');
+  io.sockets.emit('notify', {
+    'message': req.body.message,
+    'level': req.body.level,
+    'type': req.body.type
+  });
+  res.send('ok');
 });
 
 app.get('/*', function(req, res) {

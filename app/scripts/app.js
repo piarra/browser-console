@@ -34,9 +34,33 @@ angular.module('xxxApp', [
     var seq = 0;
     socket.on('notify', function(data) {
       var dt = new Date();
-      $scope.logs.push({seq: seq, content: $sce.trustAsHtml(data.message), timestamp: dt.toString()});
-      seq++;
 
+      var styleClass = 'alert-info';
+      //info, debug, notice, warning, error
+      //<div class="alert alert-success" role="alert">...</div>
+      //<div class="alert alert-info" role="alert">...</div>
+      //<div class="alert alert-warning" role="alert">...</div>
+      //<div class="alert alert-danger" role="alert">...</div>
+      if (data.level == 'info') {
+          styleClass = 'alert-success';
+      } else if (data.level == 'debug') {
+          styleClass = 'alert-info';
+      } else if (data.level == 'notice') {
+          styleClass = 'alert-info';
+      } else if (data.level == 'warning') {
+          styleClass = 'alert-warning';
+      } else if (data.level == 'error') {
+          styleClass = 'alert-danger';
+      }
+      $scope.logs.push({
+        seq: seq,
+        content: $sce.trustAsHtml(data.message),
+        level: data.level,
+        styleClass: styleClass,
+        type: data.type,
+        timestamp: dt.toString()
+      });
+      seq++;
       setTimeout(function() {
         window.scrollTo(0, document.body.scrollHeight);
       }, 100);
