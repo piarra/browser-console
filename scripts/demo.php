@@ -14,11 +14,13 @@ for ($i = 0; $i <= 100; $i++) {
     $filename = '/tmp/test.png';
     imagepng($im, $filename);
 
-    //$console->logByImage($im, 'info', 'gd');
     $console->log('info' . $i, 'info');
+    $console->log('notice' . $i, 'notice');
+    $console->log('debug' . $i, 'debug');
     $console->log('warning' . $i, 'warning');
     $console->log('error'. $i, 'error');
-    $console->logByImage($filename, 'info', 'file');
+    $console->logByImage($im, 'info', 'gd');
+    //$console->logByImage($filename, 'info', 'file');
     sleep(1);
 }
 

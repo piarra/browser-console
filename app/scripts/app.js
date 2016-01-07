@@ -36,17 +36,12 @@ angular.module('xxxApp', [
       var dt = new Date();
 
       var styleClass = 'alert-info';
-      //info, debug, notice, warning, error
-      //<div class="alert alert-success" role="alert">...</div>
-      //<div class="alert alert-info" role="alert">...</div>
-      //<div class="alert alert-warning" role="alert">...</div>
-      //<div class="alert alert-danger" role="alert">...</div>
       if (data.level == 'info') {
-          styleClass = 'alert-success';
+          styleClass = 'alert-info';
       } else if (data.level == 'debug') {
-          styleClass = 'alert-info';
+          styleClass = 'alert-success';
       } else if (data.level == 'notice') {
-          styleClass = 'alert-info';
+          styleClass = 'alert-success';
       } else if (data.level == 'warning') {
           styleClass = 'alert-warning';
       } else if (data.level == 'error') {

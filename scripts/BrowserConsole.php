@@ -16,7 +16,6 @@ class BrowserConsole
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($query));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:44.0) Gecko/20100101 Firefox/44.0'); 
         try {
             $res = curl_exec($ch);
         }
@@ -33,8 +32,7 @@ class BrowserConsole
     public function logByImage($obj, $level, $type = 'jpeg') {
         if ($type == 'jpeg' || $type == 'png') {
             $img = 'data:image/' . $type . ';base64,' . base64_encode($obj);
-            $imghtml = '<img src="' . $img . '"/>';
-            $this->log($imghtml, $level, 'html');
+            $this->log($img, $level, $type);
         } elseif ($type == 'file') {
             $imgBinary = file_get_contents($obj);
             if (preg_match('/\.(png|jpg)$/', $obj, $m)) {
