@@ -17,11 +17,20 @@
   <body>
     <div class="app">
       <div style="background-color: black; color:#fff;">BROWSER CONSOLE</div>
-      <div ng-controller="ConsoleCtrl">
+      <div ng-controller="ConsoleCtrl" class="col-lg-12 col-md-12">
         <div ng-repeat="log in logs">
-          <iframe srcdoc="{{log.content}}" style="width: 100%;" frameborder="0"></iframe>
-          <div style="text-align: right;">{{log.timestamp}}</div>
-          <hr />
+          <div ng-if="log.type == 'html'" class="alert alert-info" ng-class="log.styleClass">
+            <iframe srcdoc="{{log.content}}" style="width: 100%;" frameborder="0"></iframe>
+            <div style="text-align: right;">{{log.timestamp}}</div>
+          </div>
+          <div ng-if="log.type == 'jpeg' || log.type == 'png'" class="alert alert-info" ng-class="log.styleClass">
+            <img ng-src="{{log.content}}" />
+            <div style="text-align: right;">{{log.timestamp}}</div>
+          </div>
+          <div ng-if="log.type == 'text'" class="alert alert-info" ng-class="log.styleClass">
+            {{log.content}}
+            <div style="text-align: right;">{{log.timestamp}}</div>
+          </div>
         </div>
       </div> 
     </div>
