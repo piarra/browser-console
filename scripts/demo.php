@@ -11,14 +11,14 @@ for ($i = 0; $i <= 100; $i++) {
     $r = rand(10, 50);
     imagearc($im, rand(1,500), rand(1, 100), $r, $r,  0, 360, $color);
 
-    ob_start();
-    imagejpeg($im);
-    $str = ob_get_contents();
-    ob_end_clean();
-    
-    $img = 'data:image/jpeg;base64,' . base64_encode($str);
-    $imghtml = '<img src="' . $img . '"/>';
-    $console->notify($imghtml);
+    $filename = '/tmp/test.png';
+    imagepng($im, $filename);
+
+    //$console->logByImage($im, 'info', 'gd');
+    $console->log('info' . $i, 'info');
+    $console->log('warning' . $i, 'warning');
+    $console->log('error'. $i, 'error');
+    $console->logByImage($filename, 'info', 'file');
     sleep(1);
 }
 
