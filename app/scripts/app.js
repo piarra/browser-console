@@ -5,7 +5,7 @@ angular.module('xxxApp', [
 
   })
   .factory('socket', function($rootScope) {
-    var socket = io('http://127.0.0.1:8989/');
+    var socket = io('http://127.0.0.1:8980/');
     return {
         on: function(type, listener) {
             socket.on(type, function() {
