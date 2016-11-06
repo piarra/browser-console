@@ -24,7 +24,7 @@ class BrowserConsole
         curl_close($ch);
     }
 
-    public function log($message, $level, $type = 'text')
+    public function log($message, $level = 'info', $type = 'text')
     {
         $this->notify($message, $level, $type);
     }
