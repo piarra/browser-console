@@ -32,7 +32,7 @@ class BrowserConsole
         $this->notify($message, $level, $type);
     }
 
-    public function logByJson($obj, $level)
+    public function logByJson($obj, $level = 'info')
     {
         $this->notify($message, $level, 'json');
     }
