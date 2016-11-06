@@ -9,6 +9,7 @@ class BrowserConsole
     {
         if ($type == 'json') {
             $message = '<pre>' . json_encode(json_decode($message), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . '</pre>';
+            $type = 'html';
         }
         $query = [
             'level'   => $level,
@@ -32,7 +33,12 @@ class BrowserConsole
         $this->notify($message, $level, $type);
     }
 
-    public function logByJson($obj, $level = 'info')
+    public function logByHtml($message, $level = 'info')
+    {
+        $this->notify($message, $level, 'html');
+    }
+
+    public function logByJson($message, $level = 'info')
     {
         $this->notify($message, $level, 'json');
     }
