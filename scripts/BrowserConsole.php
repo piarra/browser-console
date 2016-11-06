@@ -3,7 +3,7 @@
 class BrowserConsole
 {
     private $socketHost = 'localhost';
-    private $socketPort = 8980;
+    private $socketPort = 8765;
     private function notify($message, $level = 'info', $type = 'text')
     {
         $query = [
