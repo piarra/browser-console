@@ -20,7 +20,7 @@
       <div ng-controller="ConsoleCtrl" class="col-lg-12 col-md-12">
         <div ng-repeat="log in logs">
           <div ng-if="log.type == 'html'" class="alert" ng-class="log.styleClass">
-            <iframe srcdoc="{{log.content}}" style="width: 100%;" frameborder="0"></iframe>
+            <iframe srcdoc="{{log.content}}" style="width: 100%;" frameborder="0" sandbox></iframe>
             <div style="text-align: right;">{{log.timestamp}}</div>
           </div>
           <div ng-if="log.type == 'jpeg' || log.type == 'png'" class="alert" ng-class="log.styleClass">
