@@ -8,10 +8,6 @@ var app = express();
 var server = app.listen(config.get('port'));
 var io = require('socket.io').listen(server);
 
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true, limit: '5mb'}));
-
 config.get('staticPath').forEach(function(path) {
   app.use(path, express.static(config.get('staticBase') + path));
 });
